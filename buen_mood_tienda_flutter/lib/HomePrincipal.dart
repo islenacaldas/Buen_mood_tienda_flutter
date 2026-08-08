@@ -39,10 +39,20 @@ class HomePrincipal extends StatelessWidget {
           return Divider();
         },
         itemBuilder: (BuildContext context, int index) {
-          return ListTile(
-            title: Text(productos[index]["nombre"] + " "),
-            subtitle: Text("precio" + productos[index]["precio"]),
-            trailing: Icon(Icons.add_shopping_cart),
+          return Card(
+            child: ListTile(
+              title: Text(productos[index]["nombre"] + " "),
+              subtitle: Text("Precio " + productos[index]["precio"]),
+              trailing: Container(
+                decoration: BoxDecoration(
+                  color: Color(0xFFE91E63),
+                  shape: BoxShape.circle,
+                ),
+                padding: EdgeInsets.all(8),
+                child: Icon(Icons.add_shopping_cart, color: Colors.white),
+              ),
+              leading: Image(image: NetworkImage(productos[index]["foto"])),
+            ),
           );
         },
       ),
