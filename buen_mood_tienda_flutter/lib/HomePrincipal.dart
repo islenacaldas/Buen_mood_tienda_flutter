@@ -2,18 +2,22 @@ import 'package:flutter/material.dart';
 import 'Principal.dart';
 
 List<Map> productos = [
-  {"nombre": "Falda", "precio": "\$90.000", "foto": "url a colocar"},
+  {"nombre": "Falda", "precio": "\$90.000", "foto": "assets/falda.png"},
   {
     "nombre": "guantes para alzar pesas",
     "precio": "\$60.000",
-    "foto": "url a colocar",
+    "foto": "assets/guante.png",
   },
   {
     "nombre": "Tenis deportivos",
     "precio": "\$150.000",
-    "foto": "url a colocar",
+    "foto": "assets/tennis.png",
   },
-  {"nombre": "top cruzado dama", "precio": "\$25.000", "foto": "url a colocar"},
+  {
+    "nombre": "top cruzado dama",
+    "precio": "\$25.000",
+    "foto": "assets/top.png",
+  },
 ];
 
 class HomePrincipal extends StatelessWidget {
