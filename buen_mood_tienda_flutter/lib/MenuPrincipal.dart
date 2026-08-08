@@ -31,7 +31,43 @@ class MenuPrincipal extends StatelessWidget {
 
             SizedBox(
               width: double.infinity,
-              child: ElevatedButton.icon(onPressed: () {}, child: child),
+              child: ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const HomePrincipal(),
+                    ),
+                  );
+                },
+                icon: const Icon(Icons.shopping_bag, color: Colors.black),
+                label: const Text(
+                  'Ver productos',
+                  style: TextStyle(color: Colors.black, fontSize: 18),
+                ),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFFC2185B),
+                  padding: const EdgeInsets.all(15),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton.icon(
+                onPressed: () {
+                  // Aquí conectaremos el carrito después.
+                },
+                icon: const Icon(Icons.shopping_cart, color: Colors.black),
+                label: const Text(
+                  'Mi carrito',
+                  style: TextStyle(color: Colors.black, fontSize: 18),
+                ),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFFE91E63),
+                  padding: const EdgeInsets.all(15),
+                ),
+              ),
             ),
           ],
         ),

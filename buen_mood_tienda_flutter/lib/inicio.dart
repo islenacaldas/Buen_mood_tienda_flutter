@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'HomePrincipal.dart';
+import 'MenuPrincipal.dart';
 
 class Inicio extends StatelessWidget {
   const Inicio({super.key});
@@ -74,7 +74,7 @@ class Inicio extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const HomePrincipal(),
+                          builder: (context) => const MenuPrincipal(),
                         ),
                       );
                     },
