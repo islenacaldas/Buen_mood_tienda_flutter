@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'carrito.dart';
 
-List<Map> productos = [
+List<Map<String, String>> productos = [
   {"nombre": "Falda", "precio": "\$90.000", "foto": "assets/falda.png"},
   {
     "nombre": "Guantes para alzar pesas",
@@ -18,11 +19,11 @@ List<Map> productos = [
     "foto": "assets/top.png",
   },
   {
-    "nombre": "pantalon licrado dama",
+    "nombre": "Pantalón licrado dama",
     "precio": "\$90.000",
     "foto": "assets/leggins.png",
   },
-  {"nombre": "pantalon ", "precio": "\$90.000", "foto": "assets/pantalon.png"},
+  {"nombre": "Pantalón", "precio": "\$90.000", "foto": "assets/pantalon.png"},
 ];
 
 class HomePrincipal extends StatefulWidget {
@@ -33,9 +34,9 @@ class HomePrincipal extends StatefulWidget {
 }
 
 class _HomePrincipalState extends State<HomePrincipal> {
-  List<Map> carrito = [];
+  List<Map<String, String>> carrito = [];
 
-  void agregarAlCarrito(Map producto) {
+  void agregarAlCarrito(Map<String, String> producto) {
     setState(() {
       carrito.add(producto);
     });
@@ -59,9 +60,19 @@ class _HomePrincipalState extends State<HomePrincipal> {
           Stack(
             children: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  print("boton carrito presionado");
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Carrito(carrito: carrito),
+                    ),
+                  );
+                },
                 icon: const Icon(Icons.shopping_cart, color: Colors.black),
               ),
+
               if (carrito.isNotEmpty)
                 Positioned(
                   right: 5,
@@ -82,31 +93,39 @@ class _HomePrincipalState extends State<HomePrincipal> {
           ),
         ],
       ),
+
       body: ListView.separated(
         itemCount: productos.length,
+
         separatorBuilder: (BuildContext context, int index) {
           return const Divider();
         },
+
         itemBuilder: (BuildContext context, int index) {
           return Card(
             child: ListTile(
-              title: Text(productos[index]["nombre"]),
+              title: Text(productos[index]["nombre"]!),
+
               subtitle: Text("Precio ${productos[index]["precio"]}"),
+
               leading: Image.asset(
-                productos[index]["foto"],
+                productos[index]["foto"]!,
                 width: 60,
                 height: 60,
                 fit: BoxFit.cover,
               ),
+
               trailing: Container(
                 decoration: const BoxDecoration(
                   color: Color(0xFFE91E63),
                   shape: BoxShape.circle,
                 ),
+
                 child: IconButton(
                   onPressed: () {
                     agregarAlCarrito(productos[index]);
                   },
+
                   icon: const Icon(
                     Icons.add_shopping_cart,
                     color: Colors.white,

@@ -1,13 +1,9 @@
-import 'MenuPrincipal.dart';
 import 'package:flutter/material.dart';
 
 class Carrito extends StatelessWidget {
-  final List<Map> carrito;
+  final List carrito;
 
-  const Carrito({
-    super.key,
-    required this.carrito
-  })
+  const Carrito({super.key, required this.carrito});
 
   @override
   Widget build(BuildContext context) {
@@ -15,15 +11,20 @@ class Carrito extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Mi carrito'),
         centerTitle: true,
-        backgroundColor: Color(0xFFC2185B),
+        backgroundColor: const Color(0xFFC2185B),
         foregroundColor: Colors.black,
-        ),
-        body: carrito.isEmpty ? const Center(child: Text('tu carrito esta vacio', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold,
-        ),
-        ),
-        )
-        : ListView.builder(
+      ),
+
+      body: carrito.isEmpty
+          ? const Center(
+              child: Text(
+                'Tu carrito está vacío',
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+            )
+          : ListView.builder(
               itemCount: carrito.length,
+
               itemBuilder: (context, index) {
                 final producto = carrito[index];
 
@@ -40,19 +41,15 @@ class Carrito extends StatelessWidget {
 
                     title: Text(
                       producto["nombre"],
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
 
-                    subtitle: Text(
-                      'Precio: ${producto["precio"]}',
-                    ),
+                    subtitle: Text('Precio: ${producto["precio"]}'),
 
                     trailing: const Icon(
                       Icons.shopping_cart,
                       color: Color(0xFFE91E63),
-      ),
+                    ),
                   ),
                 );
               },
