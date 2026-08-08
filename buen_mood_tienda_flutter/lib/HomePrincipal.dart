@@ -17,6 +17,12 @@ List<Map> productos = [
     "precio": "\$25.000",
     "foto": "assets/top.png",
   },
+  {
+    "nombre": "pantalon licrado dama",
+    "precio": "\$90.000",
+    "foto": "assets/leggins.png",
+  },
+  {"nombre": "pantalon ", "precio": "\$90.000", "foto": "assets/pantalon.png"},
 ];
 
 class HomePrincipal extends StatefulWidget {
