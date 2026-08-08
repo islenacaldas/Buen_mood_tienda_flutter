@@ -3,7 +3,11 @@ import 'Principal.dart';
 
 List<Map> productos = [
   {"nombre": "Falda", "precio": "\$90.000", "foto": "url a colocar"},
-  {"nombre": "Balón de fútbol", "precio": "\$60.000", "foto": "url a colocar"},
+  {
+    "nombre": "guantes para alzar pesas",
+    "precio": "\$60.000",
+    "foto": "url a colocar",
+  },
   {
     "nombre": "Tenis deportivos",
     "precio": "\$150.000",
@@ -35,7 +39,11 @@ class HomePrincipal extends StatelessWidget {
           return Divider();
         },
         itemBuilder: (BuildContext context, int index) {
-          return ListTile(title: Text(productos[index]["nombre"] + " "));
+          return ListTile(
+            title: Text(productos[index]["nombre"] + " "),
+            subtitle: Text("precio" + productos[index]["precio"]),
+            trailing: Icon(Icons.add_shopping_cart),
+          );
         },
       ),
     );
