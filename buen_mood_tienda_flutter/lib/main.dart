@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:buen_mood_tienda_flutter/Principal.dart';
+import 'inicio.dart';
 
 void main() {
-  runApp(Principal());
+  runApp(const Inicio());
 }
