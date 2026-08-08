@@ -1,35 +1,20 @@
 import 'package:flutter/material.dart';
-
 import 'Principal.dart';
 
 List<Map> productos = [
-  {"nombre": "Falda", "precio": "\$90.000", Image=
-  )},
-  {
-    "nombre": "Balón de fútbol",
-    "precio": "\$60.000",
-    "icono": Icons.sports_soccer,
-  },
+  {"nombre": "Falda", "precio": "\$90.000", "foto": "url a colocar"},
+  {"nombre": "Balón de fútbol", "precio": "\$60.000", "foto": "url a colocar"},
   {
     "nombre": "Tenis deportivos",
     "precio": "\$150.000",
-    "icono": Icons.directions_run,
+    "foto": "url a colocar",
   },
-  {
-    "nombre": "Botella deportiva",
-    "precio": "\$25.000",
-    "icono": Icons.water_drop,
-  },
+  {"nombre": "top cruzado dama", "precio": "\$25.000", "foto": "url a colocar"},
 ];
 
-class HomePrincipal extends StatefulWidget {
+class HomePrincipal extends StatelessWidget {
   const HomePrincipal({super.key});
 
-  @override
-  State<HomePrincipal> createState() => _HomePrincipalState();
-}
-
-class _HomePrincipalState extends State<HomePrincipal> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +29,15 @@ class _HomePrincipalState extends State<HomePrincipal> {
         backgroundColor: Colors.pinkAccent,
         foregroundColor: Colors.black,
       ),
-      body: Column(children: [ListTile(title: Text("productos"))]),
+      body: ListView.separated(
+        itemCount: productos.length,
+        separatorBuilder: (BuildContext context, int index) {
+          return Divider();
+        },
+        itemBuilder: (BuildContext context, int index) {
+          return ListTile(title: Text(productos[index]["nombre"] + " "));
+        },
+      ),
     );
   }
 }
