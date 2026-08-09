@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'HomePrincipal.dart';
+import 'carrito.dart';
 
 class MenuPrincipal extends StatelessWidget {
   const MenuPrincipal({super.key});
@@ -56,7 +57,12 @@ class MenuPrincipal extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton.icon(
                 onPressed: () {
-                  // Aquí conectaremos el carrito después.
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const Carrito(carrito: []),
+                    ),
+                  );
                 },
                 icon: const Icon(Icons.shopping_cart, color: Colors.black),
                 label: const Text(
