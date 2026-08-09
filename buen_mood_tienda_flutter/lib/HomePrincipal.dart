@@ -27,18 +27,19 @@ List<Map<String, String>> productos = [
 ];
 
 class HomePrincipal extends StatefulWidget {
-  const HomePrincipal({super.key});
+  // Recibimos el carrito que viene desde MenuPrincipal.
+  final List<Map<String, String>> carrito;
+
+  const HomePrincipal({super.key, required this.carrito});
 
   @override
   State<HomePrincipal> createState() => _HomePrincipalState();
 }
 
 class _HomePrincipalState extends State<HomePrincipal> {
-  List<Map<String, String>> carrito = [];
-
   void agregarAlCarrito(Map<String, String> producto) {
     setState(() {
-      carrito.add(producto);
+      widget.carrito.add(producto);
     });
 
     ScaffoldMessenger.of(context).showSnackBar(
@@ -56,35 +57,39 @@ class _HomePrincipalState extends State<HomePrincipal> {
         title: const Text("Buen Mood"),
         backgroundColor: Colors.pinkAccent,
         foregroundColor: Colors.black,
+
         actions: [
           Stack(
             children: [
               IconButton(
                 onPressed: () {
-                  print("boton carrito presionado");
-
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => Carrito(carrito: carrito),
+                      builder: (context) => Carrito(carrito: widget.carrito),
                     ),
                   );
                 },
+
                 icon: const Icon(Icons.shopping_cart, color: Colors.black),
               ),
 
-              if (carrito.isNotEmpty)
+              // Número de productos en el carrito
+              if (widget.carrito.isNotEmpty)
                 Positioned(
                   right: 5,
                   top: 5,
+
                   child: Container(
                     padding: const EdgeInsets.all(5),
+
                     decoration: const BoxDecoration(
                       color: Colors.black,
                       shape: BoxShape.circle,
                     ),
+
                     child: Text(
-                      '${carrito.length}',
+                      '${widget.carrito.length}',
                       style: const TextStyle(color: Colors.white, fontSize: 12),
                     ),
                   ),
